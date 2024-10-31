@@ -9,9 +9,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Kategori extends Model
 {
     use HasFactory, SoftDeletes;
-
-    protected $table = 'categories';
-
     protected $fillable = [
         'name',
         'description',
