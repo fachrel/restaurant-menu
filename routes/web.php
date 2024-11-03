@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -17,3 +18,5 @@ Route::post('/login', [AuthController::class, 'authenticate'])->name('authentica
 Route::get('/login', [AuthController::class, 'index'])->name('login');
 
 Route::get('/logout', [AuthController::class, 'logout'])->name(name: 'logout');
+
+Route::resource('users', UserController::class)->middleware('auth');
