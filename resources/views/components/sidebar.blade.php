@@ -26,8 +26,8 @@
                         <span>Users</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
-                    <a href="kategori" class='sidebar-link'>
+                <li class="sidebar-item {{ request()->routeIs('categories') ? 'active' : '' }}">
+                    <a href="categories" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
                         <span>Kategori</span>
                     </a>
