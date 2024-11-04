@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 
 Route::get('/', function () {
@@ -18,6 +20,8 @@ Route::post('/login', [AuthController::class, 'authenticate'])->name('authentica
 Route::get('/login', [AuthController::class, 'index'])->name('login');
 
 Route::get('/logout', [AuthController::class, 'logout'])->name(name: 'logout');
+
+Route::resource('users', UserController::class)->middleware('auth');
 
 Route::prefix('kategori')->name('kategori.')->group(function () {
     Route::get('/', [CategoryController::class, 'index'])->name('index');
