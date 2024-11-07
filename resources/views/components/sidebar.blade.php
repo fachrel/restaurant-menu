@@ -32,6 +32,12 @@
                         <span>Kategori</span>
                     </a>
                 </li>
+                <li class="sidebar-item {{ request()->routeIs('menu') ? 'active' : '' }}">
+                    <a href="menu" class='sidebar-link'>
+                        <i class="bi bi-grid-fill"></i>
+                        <span>Menu</span>
+                    </a>
+                </li>
 
                 <li class="sidebar-item has-sub">
                     <a href="#" class='sidebar-link'>

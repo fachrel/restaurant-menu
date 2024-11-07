@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 
@@ -22,4 +23,5 @@ Route::get('/logout', [AuthController::class, 'logout'])->name(name: 'logout');
 
 Route::resource('users', UserController::class)->middleware('auth');
 Route::resource('categories', CategoryController::class)->middleware('auth');
+Route::resource('menu', MenuController::class)->middleware('auth');
 
