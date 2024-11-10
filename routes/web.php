@@ -21,7 +21,7 @@ Route::get('/login', [AuthController::class, 'index'])->name('login');
 
 Route::get('/logout', [AuthController::class, 'logout'])->name(name: 'logout');
 
-Route::resource('users', UserController::class)->middleware('auth');
+Route::resource('users', controller: UserController::class)->middleware('auth');
 Route::resource('categories', CategoryController::class)->middleware('auth');
-Route::resource('menu', MenuController::class)->middleware('auth');
+Route::resource('menus', MenuController::class)->middleware('auth');
 

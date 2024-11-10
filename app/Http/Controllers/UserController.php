@@ -71,20 +71,25 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
-        if(Hash::check($request->old_password, $user->password)){
+        if (Hash::check($request->old_password, $user->password)) {
             $data = $request->validated();
 
-            // dd($data);
-            if($request->has('status')){
+            if ($request->has('status')) {
                 $data['status'] = 1;
-            }else{
+            } else {
                 $data['status'] = 2;
+            }
+
+            if (!$request->filled('password')) {
+                unset($data['password']);
             }
 
             $user->update($data);
 
             return redirect()->back()->with('success', 'User updated successfully');
         }
+
+        return redirect()->back()->with('error', 'Password does not match');
     }
 
     /**

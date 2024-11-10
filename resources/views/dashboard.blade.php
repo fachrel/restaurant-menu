@@ -1,6 +1,13 @@
 @extends('layouts.app')
 @section('title', 'Dashboard')
-
+@section('styles')
+        <link rel="stylesheet" href="{{asset('mazer/assets/vendors/iconly/bold.css')}}">
+        <link rel="stylesheet" href="{{ asset('mazer/assets/vendors/apexcharts/apexcharts.css') }}">
+@endsection
+@section('scripts')
+        <script src="{{ asset('mazer/assets/vendors/apexcharts/apexcharts.js') }}"></script>
+        <script src="{{ asset('mazer/assets/js/pages/dashboard.js') }}"></script>
+@endsection
 
 @section('content')
 <div class="page-content">
@@ -267,3 +274,4 @@
     </section>
 </div>
 @endsection
+

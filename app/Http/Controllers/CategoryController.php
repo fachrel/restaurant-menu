@@ -16,7 +16,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories  = Category::get();
-        return view('content.category.index',compact('categories'));
+        return view('core.categories.index',compact('categories'));
     }
 
     /**
@@ -25,7 +25,7 @@ class CategoryController extends Controller
     public function create()
     {
         $editMode = false;
-        return view('content.category.edit', compact('editMode'));
+        return view('core.categories.edit', compact('editMode'));
     }
 
     /**
@@ -63,7 +63,7 @@ class CategoryController extends Controller
     {
         $editMode = true;
         $category = Category::findOrFail($id);
-        return view('content.category.edit', compact('editMode', 'category'));
+        return view('core.categories.edit', compact('editMode', 'category'));
     }
 
     /**
@@ -91,12 +91,12 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-    $category = Category::findOrFail($id);
+        $category = Category::findOrFail($id);
 
-    // Delete the category
-    $category->delete();
+        // Delete the category
+        $category->delete();
 
-    return redirect()->back()->with('success', 'Kategori deleted successfully');
+        return redirect()->back()->with('success', 'Kategori deleted successfully');
     }
 
 }

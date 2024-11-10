@@ -5,18 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title') - Mazer Admin Dashboard</title>
+    <link rel="stylesheet" href="{{asset('mazer/assets/vendors/choices.js/choices.css')}}" />
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
 
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" href="{{asset('mazer/assets/css/bootstrap.css')}}">
-    <link rel="stylesheet" href="{{asset('mazer/assets/vendors/iconly/bold.css')}}" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="{{asset('mazer/assets/vendors/simple-datatables/style.css')}}">
 
     <link rel="stylesheet" href="{{asset('mazer/assets/vendors/perfect-scrollbar/perfect-scrollbar.css')}}">
     <link rel="stylesheet" href="{{asset('mazer/assets/vendors/bootstrap-icons/bootstrap-icons.css')}}">
-    <link rel="stylesheet" href="{{asset('mazer/assets/css/app.css')}}">
+    <link rel="preload" href="{{asset('mazer/assets/css/app.css')}}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+    @yield('styles')
+
     {{-- <link rel="shortcut icon" href="{{asset('mazer/assets/images/favicon.svg')}}" type="image/x-icon"> --}}
 </head>
 
@@ -24,7 +27,7 @@
     <div id="app">
         <x-sidebar />
         <div id="main" class='layout-navbar'>
-            <div class="container">
+            <div class="container-xl">
 
                 <x-header />
                 <div id="main-content">
@@ -66,11 +69,10 @@
             </div>
         </div>
     </div>
-    <script src="{{ asset('mazer/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js') }}" defer></script>
-    <script src="{{ asset('mazer/assets/js/bootstrap.bundle.min.js') }}" defer></script>
-    <script src="{{ asset('mazer/assets/vendors/apexcharts/apexcharts.js') }}" defer></script>
-    <script src="{{ asset('mazer/assets/js/pages/dashboard.js') }}" defer></script>
-    <script src="{{ asset('mazer/assets/js/main.js') }}" defer></script>
+    <script src="{{ asset('mazer/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
+    <script src="{{ asset('mazer/assets/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('mazer/assets/js/main.js') }}"></script>
+    @yield('scripts')
 </body>
 
 </html>

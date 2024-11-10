@@ -20,7 +20,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($users as $user)
+                        @forelse ($users as $user)
                             <tr class="pe-auto" onclick="window.location.href = '{{ url('users/' . $user->id. '/edit') }}'" style="cursor: pointer">
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->username }}</td>
@@ -29,7 +29,11 @@
                                     <span class="badge {{ $user->status == "1" ? 'bg-success' : 'bg-danger' }}">{{ $user->status == "1" ? 'Active' : 'Inactive' }}</span>
                                 </td>
                             </tr>
-                        @endforeach
+                            @empty
+                                <tr>
+                                    <td colspan="6" class="text-center">No menu available</td>
+                                </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>

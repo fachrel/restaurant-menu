@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Menu extends Model
 {
@@ -38,6 +40,11 @@ class Menu extends Model
         'price' => 'decimal:2',
         'status' => 'integer',
     ];
+
+    public function categories(): BelongsToMany
+    {
+        return $this->belongsToMany(Category::class, 'menu_category', 'menu_id', 'category_id');
+    }
 
     
 }

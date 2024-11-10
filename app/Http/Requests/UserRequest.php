@@ -27,11 +27,20 @@ class UserRequest extends FormRequest
             'name' => 'required|string|max:50',
             'email' => 'required|string|email|max:255|unique:users,email,' . $userId,
             'username' => 'required|string|max:255|unique:users,username,' . $userId,
-            'password' => 'required|confirmed|string|min:6',
         ];
     
-        if ($this->isMethod('put')) {
-            $rules['old_password'] = 'required|string|min:6';
+        if ($this->isMethod('PUT')) {
+            $rules['old_password'] = 'required|string|min:5';
+            
+            // Only validate password if it's provided
+            $rules['password'] = 'nullable|confirmed|string|min:6';
+    
+            // If a new password is provided, ensure it's validated
+            if ($this->has('password') && !empty($this->password)) {
+                $rules['password'] = 'required|confirmed|string|min:6';
+            }
+        } else {
+            // If it's not a PUT request, password is required
             $rules['password'] = 'required|confirmed|string|min:6';
         }
     
