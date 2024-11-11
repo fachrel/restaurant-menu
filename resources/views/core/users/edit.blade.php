@@ -15,9 +15,6 @@
         <div class="card-header bg-secondary">
             <h4 class="card-title text-white ">{{ $title }}</h4>
         </div>
-        @error('name')
-            <div class="alert-danger">{{ $message }}</div>
-        @enderror
         <div class="card-content">
             <div class="card-body">
                 <form class="form form-horizontal" method="POST" action="{{ $url }}">

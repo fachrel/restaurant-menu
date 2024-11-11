@@ -14,7 +14,7 @@ class MenuController extends Controller
     public function index()
     {
         $menus  = Menu::get();
-        return view('content.menu.index',compact('menus'));
+        return view('core.menus.index',compact('menus'));
     }
 
     public function edit(string $id)
@@ -22,14 +22,14 @@ class MenuController extends Controller
         $editMode = true;
         $menu = Menu::findOrFail($id);
         $categories = Category::where('status', '1')->get();
-        return view('content.menu.edit', compact('editMode', 'menu', 'categories'));
+        return view('core.menus.edit', compact('editMode', 'menu', 'categories'));
     }
 
     public function create()
     {
         $editMode = false;
         $categories = Category::where('status', '1')->get();
-        return view('content.menu.edit', compact('editMode', 'categories'));
+        return view('core.menus.edit', compact('editMode', 'categories'));
     }
     
     public function store(MenuRequest $request)
